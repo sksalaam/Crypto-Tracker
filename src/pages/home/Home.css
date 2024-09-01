@@ -59,8 +59,11 @@
     align-items: center;
     border-bottom: 1px solid #3c3c3c;
 }
-.table-layout p{
-    /* text-align: center; */
+.table-layout .change{
+    text-align: center;
+}
+.table-layout .coin{
+    padding-left: 25px;
 }
 
 .table-layout:last-child{
@@ -83,4 +86,23 @@
 .red{
     text-align: center;
     color: red;
+}
+@media (max-width: 768px){
+    .table-layout{
+        grid-template-columns: 0.5fr 3fr 1fr 1fr;
+    } 
+    .market-cap{
+        display: none;
+    }
+}
+@media (max-width:570px){
+    .table-layout div img{
+        width: 25px;
+    }
+    .table-layout  {
+        font-size: 13px;
+    }
+    .hero form input{
+        width: 100px; ;
+    }
 }
