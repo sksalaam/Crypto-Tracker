@@ -60,5 +60,27 @@
     border-bottom: 1px solid #3c3c3c;
 }
 .table-layout p{
+    /* text-align: center; */
+}
+
+.table-layout:last-child{
+  border: none;
+}
+.table-layout div{
+    display: flex;
+    align-items: center;    
+    gap: 10px;
+
+}
+.table-layout div img{
+    width:35px ;
+}
+
+.green{
+    color: green;
     text-align: center;
+}
+.red{
+    text-align: center;
+    color: red;
 }
