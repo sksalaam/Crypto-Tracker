@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import "./home.css";
 import { CoinContext } from "../../context/CoinContext";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { allCoin, currency  } = useContext(CoinContext);
@@ -36,7 +37,14 @@ const Home = () => {
           explore more about Crptos
         </p>
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="Search crypto" onChange={onChange} value={input} required/>
+          <input type="text" placeholder="Search crypto" list="coinlist" onChange={onChange} value={input} required/>
+
+        <datalist id='coinlist'>
+          {allCoin.slice(0, 10).map((item, index) => (
+            <option key={index} value={item.name}>{item.name}</option>
+          ))}
+        </datalist>
+
           <button type="submit">Search</button>
         </form>
       </div>
@@ -49,7 +57,7 @@ const Home = () => {
           <p style={{textAlign:'center'}} className="market-cap">Market Cap</p>
         </div>
         {displayCoin.slice(0, 10).map((item, index) => (
-          <div className="table-layout" key={index}>
+          <Link to={`/coin/${item.id}`} className="table-layout" key={index}>
             <p>{item.market_cap_rank}</p>
             <div>
                 <img src={item.image}/>
@@ -60,7 +68,7 @@ const Home = () => {
             <p className={item.price_change_percentage_24h >0 ? 'green' : 'red'}>
                 {Math.floor(item.price_change_percentage_24h * 100)/100}</p>
             <p style={{textAlign:'center'}} className="market-cap">{currency.symbol}{item.market_cap.toLocaleString()} </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
