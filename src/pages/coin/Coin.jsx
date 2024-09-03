@@ -54,7 +54,7 @@ if (!coinPage, !historicalData){
   return (
     <div className='coin'>
       <div className="coin-name">
-        <img src={ coinPage.image.large}/>
+        <img src={coinPage.image? coinPage.image.large:''}/>
         <p> <b>{coinPage.name} ({coinPage.symbol?coinPage.symbol.toUpperCase():''})</b></p>
       </div>
       <div className="coin-chart">
@@ -67,7 +67,7 @@ if (!coinPage, !historicalData){
         </ul>
         <ul>
           <li>Current Price</li>
-          <li>{currency.symbol} {coinPage.market_data.current_price[currency.name].toLocaleString()}</li>
+          <li>{currency.symbol} {coinPage.market_data ?coinPage.market_data.current_price[currency.name].toLocaleString():''}</li>
         </ul>
         <ul>
           <li>Market Cap</li>
